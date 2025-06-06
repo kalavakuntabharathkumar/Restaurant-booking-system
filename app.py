@@ -222,5 +222,9 @@ def verify_otp():
         return jsonify({"success": True})
     return jsonify({"success": False, "message": "Invalid OTP"})
 
+@app.route('/google822db3c93823c933.html')
+def google_verification():
+    return "google-site-verification: google822db3c93823c933.html"
+
 if __name__ == '__main__':
     app.run()
