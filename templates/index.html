@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Dine Booking</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    #loginPage, #mainPage {
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 50px;
+    }
+    .login-form {
+      max-width: 400px;
+      margin: 100px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .login-form input, .login-form button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .login-form input {
+      background: #fff;
+    }
+    .login-form button {
+      background: #ff5e57;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    header { text-align: center; margin-bottom: 30px; }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    nav button {
+      padding: 12px 20px;
+      border: none;
+      background: #333;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    nav button:hover { background: #555; }
+    section { display: none; animation: fadeIn 0.5s ease-in-out; }
+    .active { display: block; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #fff;
+    }
+    form input, form button, textarea {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+    }
+    form input, textarea { background: #f9f9f9; color: #333; }
+    form button {
+      background: #28a745;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #chatbot-container {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 300px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      z-index: 9999;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    #chatlogs {
+      height: 200px;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    #chatlogs div { margin: 5px 0; }
+    #chatbox input {
+      width: calc(100% - 50px);
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+    #chatbox button {
+      padding: 8px 10px;
+      border: none;
+      background-color: #ff5e57;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div id="loginPage">
+  <div class="login-form">
+    <h2>Login to Royal Dine</h2>
+    <input type="text" id="username" placeholder="Username (admin or client)">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="loginError" style="color:red; text-align:center;"></p>
+  </div>
+</div>
+<div id="mainPage" style="display:none;">
+  <header>
+    <h1>Royal Dine Restaurant Booking</h1>
+    <p>Welcome to our luxurious booking system ✨</p>
+  </header>
+  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('book')">Book</button>
+    <button onclick="showSection('check')">Check/Cancel</button>
+    <button onclick="showSection('gallery')">Gallery</button>
+    <button onclick="showSection('about')">About</button>
+  </nav>
+  <section id="home" class="active">
+    <h2>Welcome!</h2>
+    <p>Find the best place to dine and book your table easily.</p>
+  </section>
+  <section id="book">
+    <h2>Book a Table</h2>
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <input type="number" id="guests" placeholder="Guests" required>
+      <input type="datetime-local" id="datetime" required>
+      <button type="submit">Reserve</button>
+    </form>
+    <p id="confirmationMessage"></p>
+    <div id="feedbackSection" style="display:none;">
+      <textarea id="feedback" placeholder="Leave your feedback..."></textarea>
+      <button onclick="submitFeedback()">Submit Feedback</button>
+    </div>
+  </section>
+  <section id="check">
+    <h2>Check / Cancel Booking</h2>
+    <input type="text" id="checkBookingID" placeholder="Enter Booking ID (e.g. RD-00001)">
+    <button onclick="checkBooking()">Check Booking</button>
+    <div id="bookingDetails"></div>
+    <button id="cancelBtn" style="display:none;" onclick="cancelBooking()">Cancel Booking</button>
+  </section>
+  <section id="gallery">
+    <h2>Our Premium Restaurants</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Restaurant 1">
+      <img src="https://images.unsplash.com/photo-1555992336-03a23c3bf4e1?auto=format&fit=crop&w=400&q=80" alt="Restaurant 2">
+      <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=400&q=80" alt="Restaurant 3">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Restaurant 4">
+    </div>
+  </section>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Royal Dine brings you exquisite dining, 5-star service, and seamless booking experiences for every occasion.</p>
+  </section>
+  <footer>
+    &copy; 2025 Royal Dine. All rights reserved.
+  </footer>
+</div>
+<div id="chatbot-container">
+  <div id="chatlogs"></div>
+  <div id="chatbox">
+    <input type="text" id="userInput" placeholder="Ask about table availability..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+<script>
+function login() {
+  const user = document.getElementById("username").value.toLowerCase();
+  const pass = document.getElementById("password").value;
+  const error = document.getElementById("loginError");
+  if ((user === "admin" && pass === "admin123") || (user === "client" && pass === "client123")) {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+  } else {
+    error.textContent = "Wrong username or password!";
+  }
+}
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+document.getElementById("bookingForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const guests = document.getElementById("guests").value;
+  const datetime = document.getElementById("datetime").value;
+  const date = new Date(datetime).toISOString().split('T')[0];
+  const time = new Date(datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  fetch('/api/book', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, phone, people: guests, date, time })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      document.getElementById("confirmationMessage").innerHTML =
+        `✅ Booking ID: <strong>${data.booking_id}</strong><br> <a href="/api/pdf/${data.booking_id}" target="_blank">Download Receipt PDF</a>`;
+      document.getElementById("feedbackSection").style.display = 'block';
+      document.getElementById("bookingForm").reset();
+    } else {
+      document.getElementById("confirmationMessage").textContent = 'Booking failed: ' + data.message;
+    }
+  })
+  .catch(() => {
+    document.getElementById("confirmationMessage").textContent = 'Booking failed! Server error.';
+  });
+});
+function checkBooking() {
+  const bid = document.getElementById("checkBookingID").value.trim();
+  fetch("/api/check", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ booking_id: bid })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const info = document.getElementById("bookingDetails");
+    if (data.found) {
+      const b = data.booking;
+      info.innerHTML = `Name: ${b.name}<br>Email: ${b.email}<br>Guests: ${b.people}<br>Status: ${b.status}`;
+      document.getElementById("cancelBtn").style.display = b.status === 'confirmed' ? 'inline-block' : 'none';
+    } else {
+      info.textContent = 'Booking not found';
+    }
+  });
+}
+function cancelBooking() {
+  const bid = document.getElementById("checkBookingID").value.trim();
+  fetch("/api/cancel", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ booking_id: bid })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert("Booking cancelled successfully!");
+      checkBooking();
+    }
+  });
+}
+function submitFeedback() {
+  const feedback = document.getElementById("feedback").value;
+  const bookingID = document.getElementById("confirmationMessage").innerText.match(/RD-\d{5}/)[0];
+  fetch("/api/feedback", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ booking_id: bookingID, feedback })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert("Feedback submitted! Thank you!");
+      document.getElementById("feedbackSection").style.display = 'none';
+    }
+  });
+}
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chatlogs = document.getElementById("chatlogs");
+  const message = input.value.trim();
+  if (!message) return;
+  const userMsg = document.createElement("div");
+  userMsg.textContent = "You: " + message;
+  chatlogs.appendChild(userMsg);
+  input.value = "";
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message })
+    });
+    const data = await res.json();
+    const botMsg = document.createElement("div");
+    botMsg.textContent = "Bot: " + data.response;
+    chatlogs.appendChild(botMsg);
+    chatlogs.scrollTop = chatlogs.scrollHeight;
+  } catch {
+    const errMsg = document.createElement("div");
+    errMsg.textContent = "Bot: Something went wrong!";
+    chatlogs.appendChild(errMsg);
+  }
+}
+</script>
+</body>
+</html>
