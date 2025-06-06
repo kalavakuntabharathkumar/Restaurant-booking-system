@@ -226,5 +226,10 @@ def verify_otp():
 def google_verification():
     return "google-site-verification: google822db3c93823c933.html"
 
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_file('sitemap.xml')
+
+
 if __name__ == '__main__':
     app.run()
