@@ -180,19 +180,39 @@ def generate_pdf(bid):
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    msg = request.json.get('message')
-    if not msg:
-        return jsonify({'response': "Please type a message."})
+    user_message = request.json.get('message', '').lower()
+    response = ""
+    
+    # Predefined responses
+    if any(word in user_message for word in ["book", "reserve", "table"]):
+        response = "To book a table:\n1. Go to the 'Book' tab\n2. Fill the form\n3. Get your Booking ID (RD-XXXXX)"
+    elif any(word in user_message for word in ["check", "status", "booking id"]):
+        response = "Check bookings:\n1. Visit 'Check/Cancel' tab\n2. Enter Booking ID (e.g. RD-12345)\n3. View details"
+    elif any(word in user_message for word in ["cancel", "delete"]):
+        response = "⚠️ Cancellation policy:\n- Free if cancelled 24h before\n- 50% charge within 24h\nGo to 'Check/Cancel' tab"
+    elif any(word in user_message for word in ["hello", "hi", "hey"]):
+        response = "👋 Hello! I'm Royal Dine Bot. Ask about:\n- Booking tables\n- Checking reservations\n- Cancellations"
+    elif any(word in user_message for word in ["hour", "time", "open"]):
+        response = "🕒 Restaurant hours:\n- Monday to Sunday: 11AM - 11PM\n- Happy Hour: 3PM-6PM (50% off drinks)"
+    else:
+        # Fallback to Gemini AI
+        try:
+            chat_session = model.start_chat()
+            prompt = f"""
+            You're Royal Dine's assistant. Respond concisely (max 2 sentences) about:
+            - Table bookings (2-10 people)
+            - Booking status (require RD-XXXXX ID)
+            - Cancellation policy (24h notice)
+            - Restaurant hours (11AM-11PM daily)
+            - Location: 123 Food Street, Bangalore
+            
+            User asked: {user_message}
+            """
+            response = chat_session.send_message(prompt).text
+        except Exception as e:
+            response = "⚠️ Sorry, I'm having trouble. Please try again later."
 
-    chat_session = model.start_chat()
-    chat_session.send_message("""
-        You are Royal Dine Bot. Assist with booking, status check, or cancel. Use Booking ID.
-    """)
-    chat_session.send_message(msg)
-    try:
-        return jsonify({'response': chat_session.last.text})
-    except Exception as e:
-        return jsonify({'response': str(e)})
+    return jsonify({'response': response})
 
 @app.route('/api/request-otp', methods=['POST'])
 def request_otp():
@@ -229,7 +249,6 @@ def google_verification():
 @app.route('/sitemap.xml')
 def sitemap():
     return send_file('sitemap.xml')
-
 
 if __name__ == '__main__':
     app.run()
