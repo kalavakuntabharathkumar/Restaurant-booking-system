@@ -67,6 +67,159 @@
     .login-form button:hover {
       background: #ff3f3f;
     }
+    /* REGISTER PAGE */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+}
+
+.register-form {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #ff5e57;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+.register-form select {
+  background: #f9f9f9;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #ff5e57;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  margin: 5px;
+}
+
+.form-buttons button:last-child {
+  background: #6c757d;
+}
+
+@media (max-width: 600px) {
+  .register-form {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons button {
+    margin: 5px 0;
+  }
+}
+/* FORGOT PASSWORD */
+.forgot-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+}
+
+.forgot-form {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.forgot-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #0d6efd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.forgot-form input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+.forgot-form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forgot-form .form-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  margin: 5px;
+}
+
+.forgot-form .form-buttons button:last-child {
+  background: #6c757d;
+}
+
+@media (max-width: 600px) {
+  .forgot-form {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .forgot-form .form-buttons {
+    flex-direction: column;
+  }
+
+  .forgot-form .form-buttons button {
+    margin: 5px 0;
+  }
+}
+
+
     header { 
       text-align: center; 
       margin-bottom: 40px;
@@ -439,28 +592,70 @@
     }
   </style>
 </head>
-<body>
-<div id="loginPage">
-  <div class="login-form">
-    <h2>Login to Royal Dine</h2>
-    <input type="text" id="username" placeholder="Username (admin or client)">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <p id="loginError" style="color:red; text-align:center; margin-top:15px;"></p>
+<body><!–– LOGIN PAGE ––>
+  <div id="loginPage">
+    <div class="login-form">
+      <h2>Login to Royal Dine</h2>
+      <input type="text" id="username" placeholder="Username (email)">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <p id="loginError" style="color:red; text-align:center; margin-top:15px;"></p>
+
+      <!-- ✅ REGISTER & FORGOT PASSWORD BUTTONS -->
+      <div style="text-align:center; margin-top:10px;">
+        <button onclick="scrollToSection('register')">Register</button>
+        <button onclick="scrollToSection('forgot')">Forgot Password?</button>
+      </div>
+    </div>
   </div>
-</div>
-<div id="mainPage" style="display:none;">
-  <header>
-    <h1>Royal Dine Restaurant</h1>
-    <p>Experience luxury dining at its finest - Book your table today ✨</p>
-  </header>
-  <nav>
-    <button onclick="showSection('home')">Home</button>
-    <button onclick="showSection('book')">Book Table</button>
-    <button onclick="showSection('check')">Manage Booking</button>
-    <button onclick="showSection('gallery')">Gallery</button>
-    <button onclick="showSection('about')">About Us</button>
-  </nav>
+
+  <section id="register" class="register-wrapper">
+    <div class="register-form">
+      <h2>Register</h2>
+      <input type="text" id="regName" placeholder="Full Name" required>
+      <input type="number" id="regAge" placeholder="Age" required>
+      <select id="regGender" required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <input type="email" id="regEmail" placeholder="Email" required>
+      <input type="password" id="regPassword" placeholder="Create Password" required>
+      <div class="form-buttons">
+        <button onclick="registerUser()">Submit</button>
+        <button onclick="hideSection('register')">Cancel</button>
+      </div>
+    </div>
+  </section>
+  
+
+  <section id="forgot" class="forgot-wrapper">
+    <div class="forgot-form">
+      <h2>Forgot Password</h2>
+      <input type="email" id="forgotEmail" placeholder="Enter your email" required>
+      <div class="form-buttons">
+        <button onclick="sendResetLink()">Send Reset Link</button>
+        <button onclick="hideSection('forgot')">Cancel</button>
+      </div>
+    </div>
+  </section>
+  
+
+  <!–– MAIN PAGE ––>
+  <div id="mainPage" style="display:none;">
+    <header>
+      <h1>Royal Dine Restaurant</h1>
+      <p>Experience luxury dining at its finest - Book your table today ✨</p>
+    </header>
+    <nav>
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('book')">Book Table</button>
+      <button onclick="showSection('check')">Manage Booking</button>
+      <button onclick="showSection('gallery')">Gallery</button>
+      <button onclick="showSection('about')">About Us</button>
+      <button onclick="showSection('availability')">Check Availability</button>
+    </nav>
   
   <section id="home" class="active">
     <h2>Welcome to Royal Dine</h2>
@@ -481,36 +676,71 @@
     </div>
   </section>
   
-  <section id="book">
-    <h2>Reserve Your Table</h2>
-    <p style="margin-bottom:20px;">Fill out the form below to book your dining experience. We'll send confirmation to your email.</p>
-    <form id="bookingForm">
-      <input type="text" id="name" placeholder="Your Full Name" required>
-      <input type="email" id="email" placeholder="Your Email Address" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <input type="number" id="guests" placeholder="Number of Guests" min="1" required>
-      <input type="datetime-local" id="datetime" required>
-      <textarea id="specialRequests" placeholder="Any special requests? (Dietary restrictions, celebrations, etc.)" rows="3"></textarea>
-      <button type="submit">Reserve Table</button>
+  <section id="book" style="padding: 40px 20px; max-width: 600px; margin: 50px auto; background: rgba(255, 255, 255, 0.05); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center;">
+    <h2 style="margin-bottom: 10px; color: #28a745;">Reserve Your Table</h2>
+    <p style="margin-bottom: 30px; font-size: 16px;">Fill out the form to book your dining experience. We'll send a confirmation to your email.</p>
+  
+    <form id="bookingForm" style="display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" id="name" placeholder="Your Full Name" required
+        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
+  
+      <input type="email" id="email" placeholder="Your Email Address" required
+        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
+  
+      <input type="tel" id="phone" placeholder="Phone Number" required
+        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
+  
+      <input type="number" id="guests" placeholder="Number of Guests" min="1" required
+        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
+  
+      <input type="datetime-local" id="datetime" required
+        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
+  
+      <textarea id="specialRequests" placeholder="Any special requests? (Dietary restrictions, celebrations, etc.)" rows="3"
+        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;"></textarea>
+  
+      <button type="submit"
+        style="padding: 12px 25px; background-color: #28a745; color: #fff; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Reserve Table</button>
     </form>
-    <p id="confirmationMessage"></p>
-    <div id="feedbackSection" style="display:none;">
-      <h3>How was your experience?</h3>
-      <textarea id="feedback" placeholder="We'd love to hear your feedback about your dining experience..."></textarea>
-      <button onclick="submitFeedback()">Submit Feedback</button>
+  
+    <p id="confirmationMessage" style="margin-top: 20px; font-size: 16px; color: #17a2b8;"></p>
+  
+    <div id="feedbackSection" style="display:none; margin-top: 40px;">
+      <h3 style="margin-bottom: 10px; color: #ffc107;">How was your experience?</h3>
+      <textarea id="feedback" placeholder="We'd love to hear your feedback..." rows="4"
+        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;"></textarea>
+      <button onclick="submitFeedback()"
+        style="margin-top: 10px; padding: 10px 20px; background-color: #ffc107; color: #000; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Submit Feedback</button>
     </div>
   </section>
   
-  <section id="check">
-    <h2>Manage Your Booking</h2>
-    <p>Check your reservation details or cancel your booking using your booking ID (e.g. RD-00001)</p>
-    <div style="display:flex; gap:10px; margin-top:20px;">
-      <input type="text" id="checkBookingID" placeholder="Enter Booking ID" style="flex:1;">
-      <button onclick="checkBooking()" style="width:auto; padding:0 25px;">Check</button>
+  
+  <section id="check" style="padding: 40px 20px; max-width: 600px; margin: 40px auto; background: rgba(255, 255, 255, 0.05); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center;">
+    <h2 style="margin-bottom: 10px; color: #ff5e57;">Manage Your Booking</h2>
+    <p style="margin-bottom: 30px; font-size: 16px;">Check your reservation details or cancel using your Booking ID (e.g., <strong>RD-00001</strong>)</p>
+  
+    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+      <input
+        type="text"
+        id="checkBookingID"
+        placeholder="Enter Booking ID"
+        style="width: 100%; max-width: 400px; padding: 12px 15px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; outline: none;"
+      />
+      <button
+        onclick="checkBooking()"
+        style="padding: 10px 25px; background-color: #0d6efd; color: #fff; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;"
+      >Check Booking</button>
     </div>
-    <div id="bookingDetails"></div>
-    <button id="cancelBtn" style="display:none; background:#dc3545;" onclick="cancelBooking()">Cancel Booking</button>
+  
+    <div id="bookingDetails" style="margin-top: 30px; text-align: left;"></div>
+  
+    <button
+      id="cancelBtn"
+      onclick="cancelBooking()"
+      style="display: none; margin-top: 20px; padding: 10px 25px; background-color: #dc3545; color: #fff; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;"
+    >Cancel Booking</button>
   </section>
+  
   
   <section id="gallery">
     <h2>Our Premium Restaurants</h2>
@@ -567,6 +797,15 @@
     </div>
   </section>
   
+
+
+
+  <!–– ✅ CHECK TABLE AVAILABILITY SECTION ––>
+  <section id="availability" style="display:none; background:rgba(0,0,0,0.6); padding:30px; border-radius:10px; margin-bottom:30px;">
+    <h2>Check Table Availability</h2>
+    <div id="tableGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:15px;"></div>
+  </section>
+  
   <footer>
     <p>&copy; 2025 Royal Dine. All rights reserved.</p>
     <p style="margin-top:10px; opacity:0.8;">Designed with ❤️ for food enthusiasts</p>
@@ -598,35 +837,122 @@
 <button id="chatbot-toggle">💬 Need Help?</button>
 
 <script>
-// Login Functionality
-function login() {
-  const user = document.getElementById("username").value.toLowerCase();
-  const pass = document.getElementById("password").value;
-  const error = document.getElementById("loginError");
-  
-  if ((user === "admin" && pass === "admin123") || (user === "client" && pass === "client123")) {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("mainPage").style.display = "block";
-    // Show welcome message in chatbot if it's the first login
-    if (!localStorage.getItem('hasLoggedIn')) {
-      setTimeout(() => {
-        document.getElementById("chatbot-toggle").click();
-        addBotMessage("Welcome to Royal Dine! How can I assist you with your booking today?");
-        localStorage.setItem('hasLoggedIn', 'true');
-      }, 1000);
-    }
-  } else {
-    error.textContent = "Invalid username or password! Try 'admin/admin123' or 'client/client123'";
+  // Utility function for smooth scroll and section display
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  showSection(id);
+}
+
+function showSection(id) {
+  document.querySelectorAll('section').forEach(sec => {
+    sec.style.display = (sec.id === id) ? 'block' : 'none';
+  });
+
+  // Also make sure to hide the loginPage if we're showing register/forgot
+  if (id === 'register' || id === 'forgot') {
+    document.getElementById('loginPage').style.display = 'none';
+  }
+
+  // But show login page again when those are hidden
+  if (id === 'loginPage') {
+    document.getElementById('loginPage').style.display = 'block';
   }
 }
 
-// Section Navigation
-function showSection(id) {
-  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  // Smooth scroll to section
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+function hideSection(id) {
+  document.getElementById(id).style.display = 'none';
+  document.getElementById('loginPage').style.display = 'block'; // Return to login page
 }
+
+
+// Login Functionality
+
+// Store registered users in-memory
+let users = [];
+
+function registerUser() {
+  let n = regName.value.trim(),
+      a = regAge.value.trim(),
+      g = regGender.value,
+      e = regEmail.value.trim(),
+      p = regPassword.value;
+
+  if (!n || !a || !g || !e || !p) return alert('Complete all fields.');
+
+  // Load users from localStorage
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // Check if already exists
+  if (users.some(u => u.email === e)) {
+    alert("Email already registered.");
+    return;
+  }
+
+  users.push({name: n, age: a, gender: g, email: e, password: p});
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert('Registered! Please Login.');
+  hideSection('register');
+}
+
+function sendResetLink() {
+  let e = forgotEmail.value.trim();
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  let found = users.find(u => u.email === e);
+  if (!found) return alert('Email not registered.');
+
+  alert('Reset link sent to ' + e);
+  hideSection('forgot');
+}
+
+function login() {
+  let u = username.value.trim(),
+      p = password.value;
+  
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let f = users.find(x => x.email === u && x.password === p);
+
+  if (!f && !((u === 'admin' && p === 'admin123') || (u === 'client' && p === 'client123'))) {
+    loginError.textContent = 'Invalid login';
+    return;
+  }
+
+  // ✅ Hide all possible sections before showing mainPage
+  document.getElementById('register').style.display = 'none';
+  document.getElementById('forgot').style.display = 'none';
+  
+  loginError.textContent = '';
+  loginPage.style.display = 'none';
+  mainPage.style.display = 'block';
+  showSection('home');
+  checkAvailability();
+}
+function sendResetLink() {
+  const email = document.getElementById("forgotEmail").value.trim();
+  if (!email) {
+    alert("Please enter your email.");
+    return;
+  }
+
+  console.log("Sending to:", email); // Debug
+  fetch("/send-reset-link", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message);
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Something went wrong");
+  });
+}
+
+
 
 // Booking Form Submission
 document.getElementById("bookingForm").addEventListener("submit", function (e) {
@@ -666,10 +992,18 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   }, 1500);
 });
 
-function downloadReceipt(bookingId) {
-  // Simulated PDF download
-  alert(`Receipt for booking ${bookingId} would be downloaded in a real implementation`);
+if (res.success) {
+  const link = `http://localhost:5000/download-receipt/${res.booking_id}`;
+  messageBox.innerHTML = `
+    ✅ Booking confirmed! <br>
+    Booking ID: ${res.booking_id} <br>
+    <a href="${link}" target="_blank" style="color:#0d6efd;">⬇️ Download Receipt</a><br>
+    Check your email too for confirmation.
+  `;
+  messageBox.style.color = "green";
+  bookingForm.reset();
 }
+
 
 // Check Booking Status
 function checkBooking() {
@@ -956,6 +1290,46 @@ if (!localStorage.getItem('chatWelcomeShown')) {
     addBotMessage("Welcome to Royal Dine! I'm your virtual assistant. How can I help you with your dining experience today? You can ask about bookings, menus, hours, or policies.");
     localStorage.setItem('chatWelcomeShown', 'true');
   }, 2000);
+}
+
+function checkAvailability() {
+  const data = [
+    {table:1,status:'vacant', wait:0, price:'₹500'},
+    {table:2,status:'booked', wait:15, price:'₹700'},
+    {table:3,status:'unavailable', wait:null, price:'₹0'},
+    {table:4,status:'vacant', wait:0, price:'₹650'},
+    {table:5,status:'booked', wait:10, price:'₹550'}
+    [
+  {table:6, status:'vacant', wait:0, price:'₹600'},
+  {table:7, status:'booked', wait:20, price:'₹750'},
+  {table:8, status:'unavailable', wait:null, price:'₹0'},
+  {table:9, status:'booked', wait:15, price:'₹680'},
+  {table:10, status:'vacant', wait:0, price:'₹500'},
+  {table:11, status:'booked', wait:25, price:'₹720'},
+  {table:12, status:'unavailable', wait:null, price:'₹0'},
+  {table:13, status:'vacant', wait:0, price:'₹650'},
+  {table:14, status:'booked', wait:10, price:'₹700'},
+  {table:15, status:'vacant', wait:0, price:'₹580'}
+]
+
+  ];
+  const grid = document.getElementById('tableGrid');
+  grid.innerHTML = '';
+  data.forEach(t => {
+    let bg = t.status=='vacant' ? '#fff' : t.status=='booked' ? '#00f' : '#f00';
+    let color = t.status=='vacant' ? '#000' : '#fff';
+    let btn = t.status=='vacant'
+              ? `<button onclick="alert('Booked Table ${t.table}')">Book</button>`
+              : `<button disabled>${t.status=='booked'?'Booked':'N/A'}</button>`;
+    grid.innerHTML += `
+      <div style="background:${bg}; color:${color}; padding:15px; border-radius:10px;">
+        <strong>Table ${t.table}</strong><br>
+        Status: ${t.status}<br>
+        Wait: ${t.wait!==null?t.wait+' mins':'N/A'}<br>
+        Price: ${t.price}<br>
+        ${btn}
+      </div>`;
+  });
 }
 
 // Make ENTER key submit message
