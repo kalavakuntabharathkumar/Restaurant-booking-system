@@ -1,1083 +1,126 @@
-<!DOCTYPE html>
+..<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Royal Dine - Premium Restaurant Table Booking System. Reserve, Cancel, or Check your table bookings instantly.">
-  <meta name="keywords" content="Royal Dine, luxury restaurant booking, table reservation, book a table, cancel booking">
-  <meta name="author" content="Royal Dine Team">
-  <title>Royal Dine - Luxury Table Booking</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Dine - Restaurant Booking</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6688940424074874"
+     crossorigin="anonymous"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      line-height: 1.6;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
-    #loginPage, #mainPage {
-      background: rgba(0, 0, 0, 0.7);
-      min-height: 100vh;
-      padding: 30px;
-    }
-    .login-form {
-      max-width: 400px;
-      margin: 100px auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      transition: transform 0.3s ease;
-    }
-    .login-form:hover {
-      transform: translateY(-5px);
-    }
-    .login-form h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #fff;
-      font-size: 28px;
-      font-weight: 600;
-    }
-    .login-form input, .login-form button {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 12px 0;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: all 0.3s;
-    }
-    .login-form input {
-      background: rgba(255,255,255,0.9);
-    }
-    .login-form input:focus {
-      outline: 2px solid #ff5e57;
-      box-shadow: 0 0 10px rgba(255,94,87,0.5);
-    }
-    .login-form button {
-      background: #ff5e57;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    .login-form button:hover {
-      background: #ff3f3f;
-    }
-    /* REGISTER PAGE */
-.register-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-}
-
-.register-form {
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  max-width: 400px;
-  width: 100%;
-}
-
-.register-form h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 24px;
-  color: #ff5e57;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.register-form input,
-.register-form select {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: 'Segoe UI', sans-serif;
-  box-sizing: border-box;
-}
-
-.register-form select {
-  background: #f9f9f9;
-}
-
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-buttons button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background: #ff5e57;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  flex: 1;
-  margin: 5px;
-}
-
-.form-buttons button:last-child {
-  background: #6c757d;
-}
-
-@media (max-width: 600px) {
-  .register-form {
-    padding: 20px;
-    max-width: 90%;
-  }
-
-  .form-buttons {
-    flex-direction: column;
-  }
-
-  .form-buttons button {
-    margin: 5px 0;
-  }
-}
-/* FORGOT PASSWORD */
-.forgot-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-}
-
-.forgot-form {
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  max-width: 400px;
-  width: 100%;
-}
-
-.forgot-form h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 24px;
-  color: #0d6efd;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.forgot-form input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: 'Segoe UI', sans-serif;
-  box-sizing: border-box;
-}
-
-.forgot-form .form-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.forgot-form .form-buttons button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background: #0d6efd;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  flex: 1;
-  margin: 5px;
-}
-
-.forgot-form .form-buttons button:last-child {
-  background: #6c757d;
-}
-
-@media (max-width: 600px) {
-  .forgot-form {
-    padding: 20px;
-    max-width: 90%;
-  }
-
-  .forgot-form .form-buttons {
-    flex-direction: column;
-  }
-
-  .forgot-form .form-buttons button {
-    margin: 5px 0;
-  }
-}
-
-
-    header { 
-      text-align: center; 
-      margin-bottom: 40px;
-      padding: 20px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 10px;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #ff5e57;
-    }
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-    nav button {
-      padding: 12px 25px;
-      border: none;
-      background: rgba(255,94,87,0.8);
-      color: #fff;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    nav button:hover { 
-      background: rgba(255,94,87,1);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
-    }
-    section { 
-      display: none; 
-      animation: fadeIn 0.5s ease-in-out;
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-    .active { display: block; }
-    section h2 {
-      color: #ff5e57;
-      margin-bottom: 20px;
-      font-size: 2rem;
-      border-bottom: 2px solid #ff5e57;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 3px solid #ff5e57;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-    form input, form button, textarea {
-      display: block;
-      width: 100%;
-      margin: 15px 0;
-      padding: 12px 15px;
-      border-radius: 5px;
-      border: none;
-      font-size: 16px;
-    }
-    form input, textarea { 
-      background: rgba(255,255,255,0.9); 
-      color: #333; 
-    }
-    form input:focus, textarea:focus {
-      outline: 2px solid #ff5e57;
-      box-shadow: 0 0 10px rgba(255,94,87,0.5);
-    }
-    form button {
-      background: #28a745;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    form button:hover {
-      background: #218838;
-      transform: translateY(-2px);
-    }
-    #confirmationMessage {
-      background: rgba(40, 167, 69, 0.2);
-      padding: 15px;
-      border-radius: 5px;
-      margin: 20px 0;
-      border-left: 4px solid #28a745;
-    }
-    #bookingDetails {
-      background: rgba(13, 110, 253, 0.2);
-      padding: 15px;
-      border-radius: 5px;
-      margin: 20px 0;
-      border-left: 4px solid #0d6efd;
-    }
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      background: rgba(0,0,0,0.7);
-      border-radius: 10px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Enhanced About Section */
-    #about {
-      text-align: center;
-      background: rgba(0,0,0,0.7);
-    }
-    #about p {
-      max-width: 800px;
-      margin: 0 auto 25px;
-    }
-    .dev-team {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin: 30px 0;
-    }
-    .dev-card {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 10px;
-      width: 250px;
-      transition: transform 0.3s;
-    }
-    .dev-card:hover {
-      transform: translateY(-10px);
-      background: rgba(255,94,87,0.2);
-    }
-    .dev-card h4 {
-      color: #ff5e57;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-    .dev-card a {
-      color: #4da6ff;
-      text-decoration: none;
-    }
-    .dev-card a:hover {
-      text-decoration: underline;
-    }
-    /* Enhanced CHATBOT STYLES */
     #chatbot-container {
+      display: none;
       position: fixed;
-      bottom: 20px;
+      bottom: 80px;
       right: 20px;
       width: 350px;
-      background: rgba(0, 0, 0, 0.95);
-      color: white;
-      border-radius: 15px;
-      z-index: 9999;
-      font-family: 'Segoe UI', sans-serif;
-      box-shadow: 0 5px 30px rgba(0,0,0,0.5);
-      display: none;
-      border: 1px solid #ff5e57;
+      height: 400px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 9998;
       overflow: hidden;
-      resize: both;
-      max-width: 500px;
-      max-height: 600px;
-      min-width: 300px;
-      min-height: 400px;
     }
-    #chatbot-container.maximized {
+    .maximized {
       width: 90vw !important;
       height: 90vh !important;
-      max-width: none;
-      max-height: none;
-      resize: none;
+      left: 5vw !important;
+      top: 5vh !important;
     }
     #chat-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 15px;
-      background: rgba(255,94,87,0.9);
-      cursor: move;
-    }
-    #chat-header h3 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 600;
-      user-select: none;
-    }
-    .chat-controls {
-      display: flex;
-      gap: 10px;
-    }
-    .chat-controls button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-    .chat-controls button:hover {
-      opacity: 1;
+      background: #007bff;
+      color: #fff;
+      padding: 10px;
+      cursor: grab;
     }
     #chatlogs {
-      height: calc(100% - 150px);
+      padding: 10px;
+      height: 250px;
       overflow-y: auto;
-      padding: 15px;
-      margin-bottom: 10px;
-    }
-    #chatlogs div {
-      margin: 12px 0;
-      line-height: 1.5;
-      word-break: break-word;
-    }
-    #chatlogs strong {
-      color: #ff5e57;
-    }
-    .bot-message {
-      background: rgba(255,255,255,0.1);
-      padding: 10px 15px;
-      border-radius: 0 15px 15px 15px;
-      margin-right: 30px;
+      background: #f9f9f9;
     }
     .user-message {
-      background: rgba(255,94,87,0.2);
-      padding: 10px 15px;
-      border-radius: 15px 0 15px 15px;
-      margin-left: 30px;
       text-align: right;
+      margin: 5px;
     }
-    #quick-replies {
+    .bot-message {
+      text-align: left;
+      margin: 5px;
+    }
+    .typing-indicator {
       display: flex;
-      gap: 8px;
-      padding: 0 15px 15px;
-      flex-wrap: wrap;
+      margin: 5px;
+      align-items: center;
     }
-    #quick-replies button {
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 13px;
-      transition: all 0.3s;
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      margin: 0 2px;
+      background-color: #ccc;
+      border-radius: 50%;
+      animation: blink 1.4s infinite both;
     }
-    #quick-replies button:hover {
-      background: rgba(255,94,87,0.5);
-      transform: translateY(-2px);
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0; }
+      40% { opacity: 1; }
     }
-    #chatbox {
+    #chat-controls {
+      padding: 10px;
       display: flex;
-      padding: 0 15px 15px;
-      gap: 10px;
     }
-    #chatbox input {
+    #userInput {
       flex: 1;
-      padding: 10px 15px;
-      border-radius: 25px;
-      border: none;
-      background: rgba(255,255,255,0.9);
-      color: #333;
-    }
-    #chatbox input:focus {
-      outline: 2px solid #ff5e57;
-    }
-    #chatbox button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #ff5e57;
-      color: white;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    #chatbox button:hover {
-      background: #ff3f3f;
-      transform: translateY(-2px);
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     #chatbot-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #ff5e57;
+      z-index: 9999;
+      background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
+      padding: 12px 20px;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       cursor: pointer;
-      z-index: 9998;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #chatbot-toggle:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    .typing-indicator {
-      display: flex;
-      padding: 10px 15px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 15px;
-      width: fit-content;
-    }
-    .typing-dot {
-      width: 8px;
-      height: 8px;
-      background: rgba(255,255,255,0.7);
-      border-radius: 50%;
-      margin: 0 3px;
-      animation: typingAnimation 1.4s infinite ease-in-out;
-    }
-    .typing-dot:nth-child(1) { animation-delay: 0s; }
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typingAnimation {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-5px); }
-    }
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      #loginPage, #mainPage {
-        padding: 20px;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
-      nav {
-        gap: 10px;
-      }
-      nav button {
-        padding: 10px 15px;
-        font-size: 14px;
-      }
-      #chatbot-container {
-        width: 90%;
-        right: 5%;
-        bottom: 80px;
-      }
-      #chatbot-container.maximized {
-        width: 95% !important;
-        height: 70vh !important;
-      }
     }
   </style>
 </head>
-<body><!–– LOGIN PAGE ––>
-  <div id="loginPage">
-    <div class="login-form">
-      <h2>Login to Royal Dine</h2>
-      <input type="text" id="username" placeholder="Username (email)">
-      <input type="password" id="password" placeholder="Password">
-      <button onclick="login()">Login</button>
-      <p id="loginError" style="color:red; text-align:center; margin-top:15px;"></p>
+<body>
 
-      <!-- ✅ REGISTER & FORGOT PASSWORD BUTTONS -->
-      <div style="text-align:center; margin-top:10px;">
-        <button onclick="scrollToSection('register')">Register</button>
-        <button onclick="scrollToSection('forgot')">Forgot Password?</button>
-      </div>
-    </div>
-  </div>
-
-  <section id="register" class="register-wrapper">
-    <div class="register-form">
-      <h2>Register</h2>
-      <input type="text" id="regName" placeholder="Full Name" required>
-      <input type="number" id="regAge" placeholder="Age" required>
-      <select id="regGender" required>
-        <option value="">Select Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
-      <input type="email" id="regEmail" placeholder="Email" required>
-      <input type="password" id="regPassword" placeholder="Create Password" required>
-      <div class="form-buttons">
-        <button onclick="registerUser()">Submit</button>
-        <button onclick="hideSection('register')">Cancel</button>
-      </div>
-    </div>
-  </section>
-  
-
-  <section id="forgot" class="forgot-wrapper">
-    <div class="forgot-form">
-      <h2>Forgot Password</h2>
-      <input type="email" id="forgotEmail" placeholder="Enter your email" required>
-      <div class="form-buttons">
-        <button onclick="sendResetLink()">Send Reset Link</button>
-        <button onclick="hideSection('forgot')">Cancel</button>
-      </div>
-    </div>
-  </section>
-  
-
-  <!–– MAIN PAGE ––>
-  <div id="mainPage" style="display:none;">
-    <header>
-      <h1>Royal Dine Restaurant</h1>
-      <p>Experience luxury dining at its finest - Book your table today ✨</p>
-    </header>
-    <nav>
-      <button onclick="showSection('home')">Home</button>
-      <button onclick="showSection('book')">Book Table</button>
-      <button onclick="showSection('check')">Manage Booking</button>
-      <button onclick="showSection('gallery')">Gallery</button>
-      <button onclick="showSection('about')">About Us</button>
-      <button onclick="showSection('availability')">Check Availability</button>
-    </nav>
-  
-  <section id="home" class="active">
-    <h2>Welcome to Royal Dine</h2>
-    <p>Discover an exquisite dining experience at Royal Dine, where culinary artistry meets elegant ambiance. Our booking system makes it effortless to secure your table for any occasion.</p>
-    <div class="gallery" style="margin-top:30px;">
-      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80" alt="Luxury Dining">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="Fine Cuisine">
-      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Gourmet Food">
-    </div>
-    <div style="margin-top:30px; background:rgba(255,94,87,0.1); padding:20px; border-radius:10px; border-left:4px solid #ff5e57;">
-      <h3 style="color:#ff5e57; margin-bottom:10px;">Why Choose Royal Dine?</h3>
-      <ul style="list-style-type:none; padding-left:20px;">
-        <li>• Award-winning chefs and premium ingredients</li>
-        <li>• Elegant atmosphere perfect for any occasion</li>
-        <li>• Instant booking confirmation with easy management</li>
-        <li>• Personalized service for every guest</li>
-      </ul>
-    </div>
-  </section>
-  
-  <section id="book" style="padding: 40px 20px; max-width: 600px; margin: 50px auto; background: rgba(255, 255, 255, 0.05); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center;">
-    <h2 style="margin-bottom: 10px; color: #28a745;">Reserve Your Table</h2>
-    <p style="margin-bottom: 30px; font-size: 16px;">Fill out the form to book your dining experience. We'll send a confirmation to your email.</p>
-  
-    <form id="bookingForm" style="display: flex; flex-direction: column; gap: 15px;">
-      <input type="text" id="name" placeholder="Your Full Name" required
-        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
-  
-      <input type="email" id="email" placeholder="Your Email Address" required
-        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
-  
-      <input type="tel" id="phone" placeholder="Phone Number" required
-        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
-  
-      <input type="number" id="guests" placeholder="Number of Guests" min="1" required
-        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
-  
-      <input type="datetime-local" id="datetime" required
-        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;" />
-  
-      <textarea id="specialRequests" placeholder="Any special requests? (Dietary restrictions, celebrations, etc.)" rows="3"
-        style="padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; outline: none;"></textarea>
-  
-      <button type="submit"
-        style="padding: 12px 25px; background-color: #28a745; color: #fff; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Reserve Table</button>
-    </form>
-  
-    <p id="confirmationMessage" style="margin-top: 20px; font-size: 16px; color: #17a2b8;"></p>
-  
-    <div id="feedbackSection" style="display:none; margin-top: 40px;">
-      <h3 style="margin-bottom: 10px; color: #ffc107;">How was your experience?</h3>
-      <textarea id="feedback" placeholder="We'd love to hear your feedback..." rows="4"
-        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;"></textarea>
-      <button onclick="submitFeedback()"
-        style="margin-top: 10px; padding: 10px 20px; background-color: #ffc107; color: #000; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Submit Feedback</button>
-    </div>
-  </section>
-  
-  
-  <section id="check" style="padding: 40px 20px; max-width: 600px; margin: 40px auto; background: rgba(255, 255, 255, 0.05); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center;">
-    <h2 style="margin-bottom: 10px; color: #ff5e57;">Manage Your Booking</h2>
-    <p style="margin-bottom: 30px; font-size: 16px;">Check your reservation details or cancel using your Booking ID (e.g., <strong>RD-00001</strong>)</p>
-  
-    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-      <input
-        type="text"
-        id="checkBookingID"
-        placeholder="Enter Booking ID"
-        style="width: 100%; max-width: 400px; padding: 12px 15px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; outline: none;"
-      />
-      <button
-        onclick="checkBooking()"
-        style="padding: 10px 25px; background-color: #0d6efd; color: #fff; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;"
-      >Check Booking</button>
-    </div>
-  
-    <div id="bookingDetails" style="margin-top: 30px; text-align: left;"></div>
-  
-    <button
-      id="cancelBtn"
-      onclick="cancelBooking()"
-      style="display: none; margin-top: 20px; padding: 10px 25px; background-color: #dc3545; color: #fff; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;"
-    >Cancel Booking</button>
-  </section>
-  
-  
-  <section id="gallery">
-    <h2>Our Premium Restaurants</h2>
-    <p>Explore our exquisite locations across the city, each offering a unique dining atmosphere.</p>
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Royal Dine Downtown">
-      <img src="https://images.unsplash.com/photo-1555992336-03a23c3bf4e1?auto=format&fit=crop&w=400&q=80" alt="Royal Dine Waterfront">
-      <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=400&q=80" alt="Royal Dine Garden">
-      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Royal Dine Sky Lounge">
-      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Gourmet Cuisine">
-      <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80" alt="Elegant Bar">
-    </div>
-  </section>
-  
-  <section id="about">
-    <h2>About Royal Dine</h2>
-    <p>
-      <strong>Royal Dine</strong> is a premium restaurant booking platform developed by a team of passionate Computer Science students, offering seamless table reservations at luxury dining establishments.
-    </p>
-    <p style="margin-top:15px;">
-      Our mission is to bridge the gap between gourmet restaurants and discerning diners through innovative technology and exceptional service.
-    </p>
-    
-    <h3 style="margin-top:40px; color:#ff5e57;">👨‍💻 Development Team</h3>
-    <div class="dev-team">
-      <div class="dev-card">
-        <h4>K Bharath Kumar</h4>
-        <p>Lead Developer</p>
-        <a href="mailto:bharathnewhere@gmail.com">bharathnewhere@gmail.com</a>
-      </div>
-      <div class="dev-card">
-        <h4>K Shasanth Kumar</h4>
-        <p>Backend Specialist</p>
-        <a href="mailto:kasushashanth35@gmail.com">kasushashanth35@gmail.com</a>
-      </div>
-      <div class="dev-card">
-        <h4>K Bhuvaneswara Sai</h4>
-        <p>Frontend Developer</p>
-        <a href="mailto:bhuvaneswark4@gmail.com">bhuvaneswark4@gmail.com</a>
-      </div>
-    </div>
-    
-    <div style="margin-top:40px; background:rgba(255,255,255,0.1); padding:20px; border-radius:10px;">
-      <h4 style="color:#ff5e57; margin-bottom:15px;">Technology Stack</h4>
-      <p>This project was built using:</p>
-      <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:15px;">
-        <span style="background:rgba(255,94,87,0.2); padding:5px 15px; border-radius:20px;">Python Flask</span>
-        <span style="background:rgba(255,94,87,0.2); padding:5px 15px; border-radius:20px;">HTML5</span>
-        <span style="background:rgba(255,94,87,0.2); padding:5px 15px; border-radius:20px;">CSS3</span>
-        <span style="background:rgba(255,94,87,0.2); padding:5px 15px; border-radius:20px;">JavaScript</span>
-        <span style="background:rgba(255,94,87,0.2); padding:5px 15px; border-radius:20px;">OTP Authentication</span>
-        <span style="background:rgba(255,94,87,0.2); padding:5px 15px; border-radius:20px;">PDF Generation</span>
-      </div>
-    </div>
-  </section>
-  
-
-
-
-  <!–– ✅ CHECK TABLE AVAILABILITY SECTION ––>
-  <section id="availability" style="display:none; background:rgba(0,0,0,0.6); padding:30px; border-radius:10px; margin-bottom:30px;">
-    <h2>Check Table Availability</h2>
-    <div id="tableGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:15px;"></div>
-  </section>
-  
-  <footer>
-    <p>&copy; 2025 Royal Dine. All rights reserved.</p>
-    <p style="margin-top:10px; opacity:0.8;">Designed with ❤️ for food enthusiasts</p>
-  </footer>
-</div>
-
-<!-- Enhanced Chatbot UI -->
+<!-- Chatbot Container -->
 <div id="chatbot-container">
   <div id="chat-header">
-    <h3>Royal Dine Assistant</h3>
-    <div class="chat-controls">
-      <button id="minimize-chat">─</button>
-      <button id="maximize-chat">□</button>
-      <button id="close-chat">✕</button>
-    </div>
+    Royal Dine Assistant
+    <span style="float:right;">
+      <button id="minimize-chat">_</button>
+      <button id="maximize-chat">[ ]</button>
+      <button id="close-chat">X</button>
+    </span>
   </div>
   <div id="chatlogs"></div>
-  <div id="quick-replies">
-    <button onclick="quickReply('How do I book a table?')">Book a Table</button>
-    <button onclick="quickReply('How to check my booking?')">Check Booking</button>
-    <button onclick="quickReply('Can I cancel my reservation?')">Cancel Booking</button>
-    <button onclick="quickReply('What are your opening hours?')">Opening Hours</button>
-  </div>
-  <div id="chatbox">
-    <input type="text" id="userInput" placeholder="Ask about bookings, menus, or hours..." autocomplete="off" />
-    <button onclick="sendMessage()">Send</button>
+  <div id="chat-controls">
+    <input type="text" id="userInput" placeholder="Ask something...">
   </div>
 </div>
+
+<!-- Need Help Button -->
 <button id="chatbot-toggle">💬 Need Help?</button>
 
 <script>
-  // Utility function for smooth scroll and section display
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-  showSection(id);
-}
-
-function showSection(id) {
-  document.querySelectorAll('section').forEach(sec => {
-    sec.style.display = (sec.id === id) ? 'block' : 'none';
-  });
-
-  // Also make sure to hide the loginPage if we're showing register/forgot
-  if (id === 'register' || id === 'forgot') {
-    document.getElementById('loginPage').style.display = 'none';
-  }
-
-  // But show login page again when those are hidden
-  if (id === 'loginPage') {
-    document.getElementById('loginPage').style.display = 'block';
-  }
-}
-
-
-function hideSection(id) {
-  document.getElementById(id).style.display = 'none';
-  document.getElementById('loginPage').style.display = 'block'; // Return to login page
-}
-
-
-// Login Functionality
-
-// Store registered users in-memory
-let users = [];
-
-function registerUser() {
-  let n = regName.value.trim(),
-      a = regAge.value.trim(),
-      g = regGender.value,
-      e = regEmail.value.trim(),
-      p = regPassword.value;
-
-  if (!n || !a || !g || !e || !p) return alert('Complete all fields.');
-
-  // Load users from localStorage
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-
-  // Check if already exists
-  if (users.some(u => u.email === e)) {
-    alert("Email already registered.");
-    return;
-  }
-
-  users.push({name: n, age: a, gender: g, email: e, password: p});
-  localStorage.setItem("users", JSON.stringify(users));
-
-  alert('Registered! Please Login.');
-  hideSection('register');
-}
-
-function sendResetLink() {
-  let e = forgotEmail.value.trim();
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-
-  let found = users.find(u => u.email === e);
-  if (!found) return alert('Email not registered.');
-
-  alert('Reset link sent to ' + e);
-  hideSection('forgot');
-}
-
-function login() {
-  let u = username.value.trim(),
-      p = password.value;
   
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-  let f = users.find(x => x.email === u && x.password === p);
-
-  if (!f && !((u === 'admin' && p === 'admin123') || (u === 'client' && p === 'client123'))) {
-    loginError.textContent = 'Invalid login';
-    return;
-  }
-
-  // ✅ Hide all possible sections before showing mainPage
-  document.getElementById('register').style.display = 'none';
-  document.getElementById('forgot').style.display = 'none';
-  
-  loginError.textContent = '';
-  loginPage.style.display = 'none';
-  mainPage.style.display = 'block';
-  showSection('home');
-  checkAvailability();
-}
-function sendResetLink() {
-  const email = document.getElementById("forgotEmail").value.trim();
-  if (!email) {
-    alert("Please enter your email.");
-    return;
-  }
-
-  console.log("Sending to:", email); // Debug
-  fetch("/send-reset-link", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: email })
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert(data.message);
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Something went wrong");
-  });
-}
-
-
-
-// Booking Form Submission
-document.getElementById("bookingForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const guests = document.getElementById("guests").value;
-  const datetime = document.getElementById("datetime").value;
-  const specialRequests = document.getElementById("specialRequests").value.trim();
-  
-  if (!name || !email || !phone || !guests || !datetime) {
-    document.getElementById("confirmationMessage").textContent = 'Please fill all required fields!';
-    return;
-  }
-  
-  const date = new Date(datetime).toISOString().split('T')[0];
-  const time = new Date(datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
-  // Simulated API call (replace with actual fetch)
-  setTimeout(() => {
-    const bookingId = 'RD-' + Math.floor(10000 + Math.random() * 90000);
-    document.getElementById("confirmationMessage").innerHTML = `
-      <h3 style="color:#28a745;">Booking Confirmed!</h3>
-      <p>Your table has been successfully reserved.</p>
-      <p>Booking ID: <strong>${bookingId}</strong></p>
-      <p>Date: ${date} at ${time}</p>
-      <p>Guests: ${guests}</p>
-      <a href="#" style="color:#ff5e57; text-decoration:underline;" onclick="event.preventDefault(); downloadReceipt('${bookingId}')">Download Receipt</a>
-    `;
-    document.getElementById("feedbackSection").style.display = 'block';
-    document.getElementById("bookingForm").reset();
-    
-    // Add to chatbot conversation
-    addUserMessage(`I just booked a table for ${guests} on ${date} at ${time}`);
-    addBotMessage(`Your booking (${bookingId}) is confirmed! You can check or cancel it anytime in the Manage Booking section.`);
-  }, 1500);
-});
-
-if (res.success) {
-  const link = `http://localhost:5000/download-receipt/${res.booking_id}`;
-  messageBox.innerHTML = `
-    ✅ Booking confirmed! <br>
-    Booking ID: ${res.booking_id} <br>
-    <a href="${link}" target="_blank" style="color:#0d6efd;">⬇️ Download Receipt</a><br>
-    Check your email too for confirmation.
-  `;
-  messageBox.style.color = "green";
-  bookingForm.reset();
-}
-
-
-// Check Booking Status
-function checkBooking() {
-  const bid = document.getElementById("checkBookingID").value.trim();
-  if (!bid) {
-    document.getElementById("bookingDetails").textContent = 'Please enter a booking ID';
-    return;
-  }
-  
-  // Simulated API call
-  setTimeout(() => {
-    if (bid.startsWith('RD-')) {
-      const status = Math.random() > 0.2 ? 'confirmed' : 'cancelled';
-      const details = document.getElementById("bookingDetails");
-      details.innerHTML = `
-        <h3 style="color:#0d6efd;">Booking Details</h3>
-        <p>Booking ID: <strong>${bid}</strong></p>
-        <p>Status: <span style="color:${status === 'confirmed' ? '#28a745' : '#dc3545'}">${status}</span></p>
-        <p>Name: John Doe</p>
-        <p>Date: 2025-06-15 at 19:30</p>
-        <p>Guests: 4</p>
-      `;
-      document.getElementById("cancelBtn").style.display = status === 'confirmed' ? 'inline-block' : 'none';
-    } else {
-      document.getElementById("bookingDetails").textContent = 'Booking not found. Please check your booking ID.';
-      document.getElementById("cancelBtn").style.display = 'none';
-    }
-  }, 1000);
-}
-
-// Cancel Booking
-function cancelBooking() {
-  const bid = document.getElementById("checkBookingID").value.trim();
-  if (!bid) return;
-  
-  if (confirm(`Are you sure you want to cancel booking ${bid}?`)) {
-    // Simulated cancellation
-    setTimeout(() => {
-      alert("Booking cancelled successfully!");
-      document.getElementById("bookingDetails").innerHTML += '<p style="color:#dc3545;">This booking has been cancelled.</p>';
-      document.getElementById("cancelBtn").style.display = 'none';
-      
-      // Add to chatbot conversation
-      addUserMessage(`I cancelled my booking ${bid}`);
-      addBotMessage(`Your booking ${bid} has been cancelled. We hope to serve you another time!`);
-    }, 800);
-  }
-}
-
-// Feedback Submission
-function submitFeedback() {
-  const feedback = document.getElementById("feedback").value.trim();
-  if (!feedback) {
-    alert('Please enter your feedback before submitting');
-    return;
-  }
-  
-  // Simulated feedback submission
-  setTimeout(() => {
-    alert("Thank you for your feedback! We appreciate your input.");
-    document.getElementById("feedbackSection").style.display = 'none';
-    document.getElementById("feedback").value = '';
-  }, 800);
-}
-
-/***********************/
-/* ENHANCED CHATBOT UI */
-/***********************/
-let isDragging = false;
-let offsetX, offsetY;
+// CHATBOT FUNCTIONALITY SETUP
+let isDragging = false, offsetX, offsetY, isMaximized = false;
 let originalWidth, originalHeight, originalLeft, originalTop;
-let isMaximized = false;
 
-// Initialize chatbot
 document.addEventListener('DOMContentLoaded', function() {
   const chatbot = document.getElementById('chatbot-container');
   const header = document.getElementById('chat-header');
@@ -1085,74 +128,55 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeBtn = document.getElementById('close-chat');
   const minimizeBtn = document.getElementById('minimize-chat');
   const maximizeBtn = document.getElementById('maximize-chat');
-  
-  // Make chatbot draggable
+
+  // Drag setup
   header.addEventListener('mousedown', startDrag);
   document.addEventListener('mousemove', drag);
   document.addEventListener('mouseup', endDrag);
-  
-  // Toggle chatbot visibility
-  toggle.addEventListener('click', function() {
+
+  // Button toggles
+  toggle.addEventListener('click', () => {
     chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
-    if (chatbot.style.display === 'block') {
-      document.getElementById('chatlogs').scrollTop = document.getElementById('chatlogs').scrollHeight;
-    }
+    scrollChatToBottom();
   });
-  
-  // Close chatbot
-  closeBtn.addEventListener('click', function() {
-    chatbot.style.display = 'none';
+
+  closeBtn.addEventListener('click', () => chatbot.style.display = 'none');
+  minimizeBtn.addEventListener('click', () => chatbot.style.display = 'none');
+
+  maximizeBtn.addEventListener('click', () => {
+    isMaximized ? restoreChatbot() : maximizeChatbot();
   });
-  
-  // Minimize chatbot
-  minimizeBtn.addEventListener('click', function() {
-    chatbot.style.display = 'none';
-  });
-  
-  // Maximize/restore chatbot
-  maximizeBtn.addEventListener('click', function() {
-    if (isMaximized) {
-      restoreChatbot();
-    } else {
-      maximizeChatbot();
-    }
-  });
-  
-  // Handle Enter key in chat input
-  document.getElementById('userInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  });
-  
-  // Add welcome message if first time
-  if (!localStorage.getItem('chatbotShown') && chatbot.style.display !== 'block') {
+
+  // Welcome message for first time users
+  if (!localStorage.getItem('chatbotShown')) {
     setTimeout(() => {
       toggle.click();
       addBotMessage("Hello! I'm your Royal Dine assistant. How can I help you today?");
       localStorage.setItem('chatbotShown', 'true');
-    }, 3000);
+    }, 2000);
   }
+
+  // Enter key sends message
+  document.getElementById('userInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
 });
 
 function startDrag(e) {
-  if (e.target.id !== 'chat-header' && !e.target.closest('#chat-header')) return;
-  
+  if (!e.target.closest('#chat-header')) return;
   const chatbot = document.getElementById('chatbot-container');
   isDragging = true;
   offsetX = e.clientX - chatbot.getBoundingClientRect().left;
   offsetY = e.clientY - chatbot.getBoundingClientRect().top;
-  
   chatbot.style.cursor = 'grabbing';
   e.preventDefault();
 }
 
 function drag(e) {
   if (!isDragging) return;
-  
   const chatbot = document.getElementById('chatbot-container');
-  chatbot.style.left = (e.clientX - offsetX) + 'px';
-  chatbot.style.top = (e.clientY - offsetY) + 'px';
+  chatbot.style.left = `${e.clientX - offsetX}px`;
+  chatbot.style.top = `${e.clientY - offsetY}px`;
 }
 
 function endDrag() {
@@ -1166,7 +190,7 @@ function maximizeChatbot() {
   originalHeight = chatbot.style.height;
   originalLeft = chatbot.style.left;
   originalTop = chatbot.style.top;
-  
+
   chatbot.classList.add('maximized');
   chatbot.style.width = '90vw';
   chatbot.style.height = '90vh';
@@ -1185,21 +209,22 @@ function restoreChatbot() {
   isMaximized = false;
 }
 
-  function quickReply(text) {
-  document.getElementById('userInput').value = text;
-  sendMessage();
+function scrollChatToBottom() {
+  const chatlogs = document.getElementById('chatlogs');
+  chatlogs.scrollTop = chatlogs.scrollHeight;
 }
+
+// ====== Chat Message Handling ======
 
 function sendMessage() {
   const userInput = document.getElementById('userInput');
   const message = userInput.value.trim();
-  
   if (message === '') return;
-  
+
   addUserMessage(message);
   userInput.value = '';
-  
-  // Show typing indicator
+
+  // Typing Indicator
   const typingIndicator = document.createElement('div');
   typingIndicator.className = 'typing-indicator';
   typingIndicator.innerHTML = `
@@ -1208,136 +233,63 @@ function sendMessage() {
     <div class="typing-dot"></div>
   `;
   document.getElementById('chatlogs').appendChild(typingIndicator);
-  document.getElementById('chatlogs').scrollTop = document.getElementById('chatlogs').scrollHeight;
-  
-  // Simulate bot response after a delay
+  scrollChatToBottom();
+
   setTimeout(() => {
-    // Remove typing indicator
     typingIndicator.remove();
-    
-    // Generate bot response
     const response = generateBotResponse(message);
     addBotMessage(response);
-  }, 1000 + Math.random() * 2000); // Random delay between 1-3 seconds
+  }, 1200 + Math.random() * 800);
 }
 
 function addUserMessage(message) {
   const chatlogs = document.getElementById('chatlogs');
-  const messageDiv = document.createElement('div');
-  messageDiv.className = 'user-message';
-  messageDiv.innerHTML = `<strong>You:</strong> ${message}`;
-  chatlogs.appendChild(messageDiv);
-  chatlogs.scrollTop = chatlogs.scrollHeight;
+  const div = document.createElement('div');
+  div.className = 'user-message';
+  div.innerHTML = `<strong>You:</strong> ${message}`;
+  chatlogs.appendChild(div);
+  scrollChatToBottom();
 }
 
 function addBotMessage(message) {
   const chatlogs = document.getElementById('chatlogs');
-  const messageDiv = document.createElement('div');
-  messageDiv.className = 'bot-message';
-  messageDiv.innerHTML = `<strong>Royal Dine:</strong> ${message}`;
-  chatlogs.appendChild(messageDiv);
-  chatlogs.scrollTop = chatlogs.scrollHeight;
+  const div = document.createElement('div');
+  div.className = 'bot-message';
+  div.innerHTML = `<strong>Royal Dine:</strong> ${message}`;
+  chatlogs.appendChild(div);
+  scrollChatToBottom();
 }
 
 function generateBotResponse(message) {
-  const lowerMsg = message.toLowerCase();
-  
-  if (lowerMsg.includes('book') || lowerMsg.includes('reserve') || lowerMsg.includes('table')) {
-    return "You can book a table by clicking the 'Book Table' button above or visiting the Book section. You'll need to provide your name, contact details, party size, and preferred date/time.";
-  } 
-  else if (lowerMsg.includes('check') || lowerMsg.includes('view') || lowerMsg.includes('booking')) {
-    return "To check your booking, go to the 'Manage Booking' section and enter your booking ID (e.g. RD-12345). You can view details or cancel your reservation there.";
-  }
-  else if (lowerMsg.includes('cancel') || lowerMsg.includes('delete')) {
-    return "You can cancel your booking in the 'Manage Booking' section. Just enter your booking ID and click 'Cancel Booking'. Note that cancellations within 24 hours of reservation may incur a fee.";
-  }
-  else if (lowerMsg.includes('hour') || lowerMsg.includes('time') || lowerMsg.includes('open')) {
-    return "Our restaurants are open:\n\nMonday-Thursday: 11am - 10pm\nFriday-Saturday: 11am - 11pm\nSunday: 10am - 9pm\n\nKitchen closes 1 hour before closing time.";
-  }
-  else if (lowerMsg.includes('menu') || lowerMsg.includes('food') || lowerMsg.includes('dish')) {
-    return "We offer an exquisite menu featuring international cuisine with locally-sourced ingredients. Our seasonal menu changes regularly. You can view sample menus at any of our restaurant locations.";
-  }
-  else if (lowerMsg.includes('dress') || lowerMsg.includes('attire')) {
-    return "We recommend smart casual attire. While we don't have strict dress codes, we kindly request no sportswear, flip-flops, or beachwear in our dining areas.";
-  }
-  else if (lowerMsg.includes('parking') || lowerMsg.includes('valet')) {
-    return "All Royal Dine locations offer valet parking service for $15. Self-parking is available at nearby lots (rates vary). Our downtown location has a complimentary parking garage for guests.";
-  }
-  else if (lowerMsg.includes('special') || lowerMsg.includes('diet') || lowerMsg.includes('allerg')) {
-    return "We accommodate most dietary restrictions and allergies. Please mention any special requests when booking your table or inform your server upon arrival. Our chefs will be happy to accommodate you.";
-  }
-  else if (lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
-    return "Hello! Welcome to Royal Dine. How can I assist you with your dining experience today?";
-  }
-  else if (lowerMsg.includes('thank') || lowerMsg.includes('thanks')) {
-    return "You're very welcome! Is there anything else I can help you with?";
-  }
-  else {
-    const randomResponses = [
-      "I'm sorry, I didn't understand that. Could you rephrase your question?",
-      "I'm here to help with bookings and restaurant information. Could you ask me about reservations, hours, or other services?",
-      "For that question, you might want to contact our customer service at support@royaldine.com or call (555) 123-4567.",
-      "I'm still learning! I can answer questions about bookings, restaurant hours, menus, and policies.",
-      "Could you provide more details about your question? I'm happy to help with Royal Dine-related inquiries."
+  const msg = message.toLowerCase();
+  if (msg.includes('book') || msg.includes('reserve')) {
+    return "To book a table, click the 'Book Table' button and fill in your details.";
+  } else if (msg.includes('check') || msg.includes('view')) {
+    return "To check your booking, go to 'Manage Booking' and enter your Booking ID.";
+  } else if (msg.includes('cancel')) {
+    return "To cancel a booking, go to 'Manage Booking' and click 'Cancel Booking'.";
+  } else if (msg.includes('menu')) {
+    return "We offer Indian, Continental, and Chinese cuisines. Visit our restaurant to explore!";
+  } else if (msg.includes('timing') || msg.includes('open') || msg.includes('hours')) {
+    return "We're open daily from 11 AM to 10 PM. Happy dining!";
+  } else if (msg.includes('thank')) {
+    return "You're welcome! Enjoy your meal!";
+  } else if (msg.includes('hello') || msg.includes('hi')) {
+    return "Hello! I'm Royal Dine Assistant. How can I help you today?";
+  } else {
+    const fallback = [
+      "I'm not sure I understood that. You can ask me about bookings, timings, or our menu.",
+      "Need help with a reservation? Ask me how to book or cancel a table!",
+      "You can contact support@royaldine.com for special inquiries.",
+      "Try asking about our menu, table availability, or opening hours!"
     ];
-    return randomResponses[Math.floor(Math.random() * randomResponses.length)];
+    return fallback[Math.floor(Math.random() * fallback.length)];
   }
 }
 
-// Initialize with welcome message if first visit
-if (!localStorage.getItem('chatWelcomeShown')) {
-  setTimeout(() => {
-    addBotMessage("Welcome to Royal Dine! I'm your virtual assistant. How can I help you with your dining experience today? You can ask about bookings, menus, hours, or policies.");
-    localStorage.setItem('chatWelcomeShown', 'true');
-  }, 2000);
-}
 
-function checkAvailability() {
-  const data = [
-    {table:1,status:'vacant', wait:0, price:'₹500'},
-    {table:2,status:'booked', wait:15, price:'₹700'},
-    {table:3,status:'unavailable', wait:null, price:'₹0'},
-    {table:4,status:'vacant', wait:0, price:'₹650'},
-    {table:5,status:'booked', wait:10, price:'₹550'}
-    [
-  {table:6, status:'vacant', wait:0, price:'₹600'},
-  {table:7, status:'booked', wait:20, price:'₹750'},
-  {table:8, status:'unavailable', wait:null, price:'₹0'},
-  {table:9, status:'booked', wait:15, price:'₹680'},
-  {table:10, status:'vacant', wait:0, price:'₹500'},
-  {table:11, status:'booked', wait:25, price:'₹720'},
-  {table:12, status:'unavailable', wait:null, price:'₹0'},
-  {table:13, status:'vacant', wait:0, price:'₹650'},
-  {table:14, status:'booked', wait:10, price:'₹700'},
-  {table:15, status:'vacant', wait:0, price:'₹580'}
-]
 
-  ];
-  const grid = document.getElementById('tableGrid');
-  grid.innerHTML = '';
-  data.forEach(t => {
-    let bg = t.status=='vacant' ? '#fff' : t.status=='booked' ? '#00f' : '#f00';
-    let color = t.status=='vacant' ? '#000' : '#fff';
-    let btn = t.status=='vacant'
-              ? `<button onclick="alert('Booked Table ${t.table}')">Book</button>`
-              : `<button disabled>${t.status=='booked'?'Booked':'N/A'}</button>`;
-    grid.innerHTML += `
-      <div style="background:${bg}; color:${color}; padding:15px; border-radius:10px;">
-        <strong>Table ${t.table}</strong><br>
-        Status: ${t.status}<br>
-        Wait: ${t.wait!==null?t.wait+' mins':'N/A'}<br>
-        Price: ${t.price}<br>
-        ${btn}
-      </div>`;
-  });
-}
-
-// Make ENTER key submit message
-document.getElementById('userInput').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') {
-    sendMessage();
-  }
-});
+// JS will be updated in Parts 2 and 3 exactly as per your original style
 </script>
 </body>
 </html>
